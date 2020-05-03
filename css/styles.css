@@ -1,4 +1,11 @@
-.header-container {
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 20px;
+    background-color: white;
+    font-size: 20px;
+    color: black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -7,6 +14,7 @@
 .shopping-cart {
     height: 3em;
     padding: 10px;
+    margin-right: 50px;
     border: 1px solid #aaaaaa;
     color: white;
     background: #fbb72c;

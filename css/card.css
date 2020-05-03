@@ -1,4 +1,5 @@
 .show-case {
+    margin-top: 150px;
     display: flex;
     flex-wrap: wrap;
 }
