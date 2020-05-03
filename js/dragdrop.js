@@ -7,22 +7,21 @@ function drag(ev) {
 }
   
 function drop(ev) {
-    let data = ev.dataTransfer.getData("text");
-    console.log(data);
-    let separador = "_";
-    let limite    = 2;
-    let product_id = data.split(separador, limite)[1];
-    let prize = document.getElementById("prize_"+product_id).innerHTML;
+    let product_id = ev.dataTransfer.getData("text");
+    let prize = document.getElementById("prize_" + product_id).innerHTML;
+    prize = prize.replace(",", ".");
+
+    let currentAmount = document.getElementById("total_amount").innerHTML;
+    currentAmount = currentAmount.replace(",", ".");
+
+    let totalAmount = parseFloat(currentAmount) + parseFloat(prize);
+    totalAmount = totalAmount.toString().replace(".", ",");
 
     ev.preventDefault();
 
-    let divCartUnit = document.createElement("div");
-    let dateSpan = document.createElement('span')
-    dateSpan.innerHTML = prize ;
-    divCartUnit.appendChild(dateSpan);
+    let divCartUnit = document.getElementById("total_amount");
+    divCartUnit.innerHTML = totalAmount;
 
-
-    ev.target.appendChild(divCartUnit);
 
 //    var data = ev.dataTransfer.getData("text");
 //   ev.target.appendChild(document.getElementById(data));

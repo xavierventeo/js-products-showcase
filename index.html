@@ -9,12 +9,17 @@
     <title>Products Showcase</title>
 </head>
 <body>
-    <div id="shopping-cart" class="shopping-cart" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="shopping-cart" class="shopping-cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span><img src="img/cart.png"></span>
+        <span>Carrito (</span>
+        <span id="total_amount">0</span>
+        <span>€)</span>
+    </div>
 
 	<div class="show-case">
         <div class="product-card">
             <div class="product-tumb">
-                <img id="product_1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
+                <img id="1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
             </div>
             <div class="product-details">
                 <span class="product-category">Mandarina</span>
@@ -27,26 +32,29 @@
 
         <div class="product-card">
             <div class="product-tumb">
-                <img id="product2" src="img/platano.jpg" alt="Platano" draggable="true" ondragstart="drag(event)">
+                <img id="2" src="img/platano.jpg" alt="Platano" draggable="true" ondragstart="drag(event)">
             </div>
             <div class="product-details">
                 <span class="product-category">Platano</span>
                 <p>Plátano de Canarias</p>
-                <div class="product-price">1,25€</div>
+                <div class="product-price">
+                    <span id="prize_2">1,25</span>€
+                </div>
             </div>
         </div>
 
         <div class="product-card">
             <div class="product-tumb">
-                <img id="product3" src="img/pera-conference.jpg" alt="Pera" draggable="true" ondragstart="drag(event)">
+                <img id="3" src="img/pera-conference.jpg" alt="Pera" draggable="true" ondragstart="drag(event)">
             </div>
             <div class="product-details">
                 <span class="product-category">Pera</span>
-                <p>Pera conferencia</p>
-                <div class="product-price">1,30€</div>
+                <p>Pera Conference</p>
+                <div class="product-price">
+                    <span id="prize_3">1,30</span>€
+                </div>
             </div>
         </div>
-
     </div>
 
 </body>
