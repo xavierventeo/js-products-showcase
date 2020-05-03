@@ -7,12 +7,18 @@ function drag(ev) {
 }
   
 function drop(ev) {
+    let data = ev.dataTransfer.getData("text");
+    console.log(data);
+    let separador = "_";
+    let limite    = 2;
+    let product_id = data.split(separador, limite)[1];
+    let prize = document.getElementById("prize_"+product_id).innerHTML;
 
     ev.preventDefault();
 
     let divCartUnit = document.createElement("div");
     let dateSpan = document.createElement('span')
-    dateSpan.innerHTML = "Precio1";
+    dateSpan.innerHTML = prize ;
     divCartUnit.appendChild(dateSpan);
 
 

@@ -9,21 +9,19 @@
     <title>Products Showcase</title>
 </head>
 <body>
-    <p>Drag the image into the rectangle:</p>
+    <div id="shopping-cart" class="shopping-cart" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
-    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <br>
-    <img id="drag1" src="img/product1.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
-
-	<div class="showcase">
+	<div class="show-case">
         <div class="product-card">
             <div class="product-tumb">
-                <img id="product1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
+                <img id="product_1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
             </div>
             <div class="product-details">
                 <span class="product-category">Mandarina</span>
                 <p>Deliciosa mandarina de la huerta de Valencia</p>
-                <div class="product-price">1,66€</div>
+                <div class="product-price">
+                    <span id="prize_1">1,66</span>€
+                </div>
             </div>
         </div>
 

@@ -1,6 +1,7 @@
-#div1 {
+.shopping-cart {
     width: 350px;
     height: 70px;
     padding: 10px;
     border: 1px solid #aaaaaa;
+    background: #fbb72c url(../img/cart.png) no-repeat 10px 50%;
 }
