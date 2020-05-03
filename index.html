@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/card.css">
     <script src="js/dragdrop.js"></script>
+    <script src="data/data.js"></script>
+
     <title>Products Showcase</title>
 </head>
 <body>
@@ -64,6 +66,15 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        console.log(productsJSON);
+
+        var mydata = JSON.parse(productsJSON);
+        alert(mydata[0].name);
+
+    </script>
 
 </body>
 </html>

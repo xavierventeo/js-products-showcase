@@ -14,4 +14,6 @@ header {
     justify-content: flex-end;
     align-items: center;
 }
-
+.shopping-cart span img{
+    margin-right: 0.5em;
+}
