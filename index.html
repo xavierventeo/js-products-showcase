@@ -9,13 +9,21 @@
     <title>Products Showcase</title>
 </head>
 <body>
-    <div id="shopping-cart" class="shopping-cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <header>
+        <div id="logo" class="header-component">
+            <img src="img/logo.jpg">
+        </div>
+        <div id="brand" class="header-component">
+          Lahuertaencasa.com
+        </div>
+
+    </header>
+    <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
         <span><img src="img/cart.png"></span>
         <span>Carrito (</span>
         <span id="total_amount">0</span>
         <span>€)</span>
     </div>
-
 	<div class="show-case">
         <div class="product-card">
             <div class="product-tumb">
