@@ -8,7 +8,7 @@ function drag(ev) {
   
 function drop(ev) {
     let product_id = ev.dataTransfer.getData("text");
-    let prize = document.getElementById("prize_" + product_id).innerHTML;
+    let prize = document.getElementById("price_" + product_id).innerHTML;
     prize = prize.replace(",", ".");
 
     let currentAmount = document.getElementById("total_amount").innerHTML;
@@ -21,8 +21,4 @@ function drop(ev) {
 
     let divCartUnit = document.getElementById("total_amount");
     divCartUnit.innerHTML = totalAmount;
-
-
-//    var data = ev.dataTransfer.getData("text");
-//   ev.target.appendChild(document.getElementById(data));
 }
