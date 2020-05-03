@@ -3,78 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/card.css">
-    <script src="js/dragdrop.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link type="text/css" rel="stylesheet" href="css/card.css">
+
+    <script src="js/dragNdrop.js"></script>
     <script src="data/data.js"></script>
 
     <title>Products Showcase</title>
 </head>
 <body>
     <header>
-        <div id="logo" class="header-component">
-            <img src="img/logo.jpg">
-        </div>
-        <div id="brand" class="header-component">
-          Lahuertaencasa.com
-        </div>
+        <div class="header-container">
+            <div id="logo" class="header-component">
+                <img src="img/logo.jpg">
+            </div>
+            <div id="brand" class="header-component">
+              Lahuertaencasa.com
+            </div>    
+            <span>Arrastra la imagen del producto hasta el Carrito para comprar</span>
 
+            <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span><img src="img/cart.png"></span>
+                <span>Carrito (</span>
+                <span id="total_amount">0</span>
+                <span>€)</span>
+            </div>        
+        </div>
     </header>
-    <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <span><img src="img/cart.png"></span>
-        <span>Carrito (</span>
-        <span id="total_amount">0</span>
-        <span>€)</span>
-    </div>
-	<div class="show-case">
-        <div class="product-card">
-            <div class="product-tumb">
-                <img id="1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
-            </div>
-            <div class="product-details">
-                <span class="product-category">Mandarina</span>
-                <p>Deliciosa mandarina de la huerta de Valencia</p>
-                <div class="product-price">
-                    <span id="prize_1">1,66</span>€
-                </div>
-            </div>
-        </div>
 
-        <div class="product-card">
-            <div class="product-tumb">
-                <img id="2" src="img/platano.jpg" alt="Platano" draggable="true" ondragstart="drag(event)">
-            </div>
-            <div class="product-details">
-                <span class="product-category">Platano</span>
-                <p>Plátano de Canarias</p>
-                <div class="product-price">
-                    <span id="prize_2">1,25</span>€
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-tumb">
-                <img id="3" src="img/pera-conference.jpg" alt="Pera" draggable="true" ondragstart="drag(event)">
-            </div>
-            <div class="product-details">
-                <span class="product-category">Pera</span>
-                <p>Pera Conference</p>
-                <div class="product-price">
-                    <span id="prize_3">1,30</span>€
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script>
-        console.log(productsJSON);
-
-        var mydata = JSON.parse(productsJSON);
-        alert(mydata[0].name);
-
-    </script>
-
+	<div id="show-case" class="show-case">
+    </div> 
+    <script src="js/productsManager.js"></script>
 </body>
 </html>

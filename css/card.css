@@ -5,17 +5,16 @@
 
 .product-card {
     box-shadow: 0 2px 7px #dfdfdf;
-    margin: 50px auto;
+    margin: 10px auto;
     background: #fafafa;
 }
 
-
-.product-tumb {
+.product-image {
     padding: 50px;
     background: #f0f0f0;
 }
 
-.product-tumb img {
+.product-image img {
     max-width: 100%;
     max-height: 100%;
     cursor: move;
@@ -31,16 +30,6 @@
     text-transform: uppercase;
     color: #ccc;
     margin-bottom: 18px;
-}
-
-.product-details h4 a {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    color: #363636;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
 .product-details p {
