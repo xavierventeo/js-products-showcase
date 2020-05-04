@@ -10,7 +10,13 @@ Site that shows a list of elements understood as products. With its correspondin
 Using Drag & Drop function
 
 We must be able to drag and drop the product image (drop) to the shopping cart. This will add the value of the product to the total purchase, which will be shown to the user at all times.
+
+Included functon to remove products from shopping cart. You must click on the cart to watch the complete shopping cart and click remove item option to do it.
 ```
+## Release Notes
+
+• 1.0.0: First release, showcase and add products to shopping cart
+• 1.1.0: Added feature product delete from shopping cart
 
 ## Work Description
 
