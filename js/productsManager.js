@@ -1,9 +1,3 @@
-const removeProduct = elementRemove => {
-    elementTD = elementRemove.parentElement;
-    elementTR = elementTD.parentElement;
-    document.getElementById("modal-shopping-cart-products").deleteRow(elementTR.rowIndex);
-}
-
 const createContainerImage = (product) => {
     let divImage = document.createElement("div");
     divImage.setAttribute("class", "product-image");
