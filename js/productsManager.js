@@ -1,16 +1,4 @@
-let products = JSON.parse(productsJSON);
-
-let objectDivShowCase = document.getElementById("show-case");
-
-for (const product of products) {
-    console.log(product);
-    createCardProduct(objectDivShowCase, product);
-}
-
-function createCardProduct(divShowCase, product) {
-    let divCard = document.createElement("div");
-    divCard.setAttribute("class", "product-card");
-
+const createContainerImage = (product) => {
     let divImage = document.createElement("div");
     divImage.setAttribute("class", "product-image");
     
@@ -22,16 +10,10 @@ function createCardProduct(divShowCase, product) {
     elementImage.setAttribute("ondragstart", "drag(event)");
     divImage.appendChild(elementImage);
 
-    let divProductDetails = document.createElement("div");
-    divProductDetails.setAttribute("class", "product-details");
+    return divImage;
+}
 
-    let productName = document.createElement("span");
-    productName.setAttribute("class", "product-name");
-    productName.innerHTML = product.name;
-
-    let productDescription = document.createElement("p");
-    productDescription.innerHTML = product.description;
-
+const createContainerProductPrice = (product) => {
     let divPrice = document.createElement("div");
     divPrice.setAttribute("class", "product-price");
     let elementPrice = document.createElement("span");
@@ -43,11 +25,45 @@ function createCardProduct(divShowCase, product) {
     divPrice.appendChild(elementPrice);
     divPrice.appendChild(elementCurrency);
 
+    return divPrice;
+}
+
+const createContainerProductDetails = (product) => {
+    let divProductDetails = document.createElement("div");
+    divProductDetails.setAttribute("class", "product-details");
+
+    let productName = document.createElement("span");
+    productName.setAttribute("class", "product-name");
+    productName.innerHTML = product.name;
+
+    let productDescription = document.createElement("p");
+    productDescription.innerHTML = product.description;
+
+    let divPrice = createContainerProductPrice(product);
+
     divProductDetails.appendChild(productName);
     divProductDetails.appendChild(productDescription);
     divProductDetails.appendChild(divPrice);
 
+    return divProductDetails;
+}
+
+const createCardProduct = (product) => {
+    let divCard = document.createElement("div");
+    divCard.setAttribute("class", "product-card");
+
+    let divImage = createContainerImage(product);
+    let divProductDetails = createContainerProductDetails(product);
+
     divCard.appendChild(divImage);
     divCard.appendChild(divProductDetails);
-    divShowCase.appendChild(divCard);
+    return divCard;
+}
+
+/* Load Products and render show case to index.html */
+let products = JSON.parse(productsJSON);
+let divShowCase = document.getElementById("show-case");
+
+for (const product of products) {
+    divShowCase.appendChild(createCardProduct(product));
 }
