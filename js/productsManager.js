@@ -1,3 +1,5 @@
+const globalCurrency = "€";
+
 const createContainerImage = (product) => {
     let divImage = document.createElement("div");
     divImage.setAttribute("class", "product-image");
