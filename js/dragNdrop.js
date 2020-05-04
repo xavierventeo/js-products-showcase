@@ -1,33 +1,51 @@
-const getTotalAmountOfShoppingCartAfterEvent = ev => {
-    let product_id = ev.dataTransfer.getData("text");
-    let prize = document.getElementById("price_" + product_id).innerHTML;
-    prize = prize.replace(",", ".");
-
-    let currentAmount = document.getElementById("total_amount").innerHTML;
-    currentAmount = currentAmount.replace(",", ".");
-
-    let totalAmount = parseFloat(currentAmount) + parseFloat(prize);
-    totalAmount = totalAmount.toString().replace(".", ",");
-    return totalAmount;
-}
-
 const generateShoppingCartItem = ev => {
     let product_id = ev.dataTransfer.getData("text");
-    let prize = document.getElementById("price_" + product_id).innerHTML;
-    prize = prize.replace(",", ".");
+    let price = document.getElementById("price_" + product_id).innerHTML;
+    let name = document.getElementById("name_" + product_id).innerHTML;
+    let currency = document.getElementById("currency_" + product_id).innerHTML;
 
-    let currentAmount = document.getElementById("total_amount").innerHTML;
-    currentAmount = currentAmount.replace(",", ".");
+    let table = document.getElementById("modal-shopping-cart-products");
 
-    let totalAmount = parseFloat(currentAmount) + parseFloat(prize);
-    totalAmount = totalAmount.toString().replace(".", ",");
-    return totalAmount;
+    let row = table.insertRow(0);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+
+    let elementName = document.createElement("span");
+    elementName.setAttribute("class","product-name");
+    elementName.innerHTML = name;
+    cell1.appendChild(elementName);
+
+    let elementPrice = document.createElement("span");
+    elementPrice.setAttribute("class","product-price");
+    elementPrice.innerHTML = price.toString() + currency;
+    cell2.appendChild(elementPrice);
+
+    let elementRemove = document.createElement("span");
+    elementRemove.setAttribute("class","remove");
+    elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
+    elementRemove.innerHTML = "×";
+    cell3.appendChild(elementRemove);
 }
 
 const allowDrop = ev => {
     ev.preventDefault();
 }
-  
+
+
+const getTotalAmountOfShoppingCartAfterEvent = ev => {
+    let product_id = ev.dataTransfer.getData("text");
+    let price = document.getElementById("price_" + product_id).innerHTML;
+    prize = price.replace(",", ".");
+
+    let currentAmount = document.getElementById("total_amount").innerHTML;
+    currentAmount = currentAmount.replace(",", ".");
+
+    let totalAmount = parseFloat(currentAmount) + parseFloat(prize);
+    totalAmount = totalAmount.toString().replace(".", ",");
+    return totalAmount;
+}
+
 const drag = ev => {
     ev.dataTransfer.setData("text", ev.target.id);
 }
@@ -43,7 +61,5 @@ const drop = ev => {
     let divCartUnit = document.getElementById("total_amount");
     divCartUnit.innerHTML = totalAmount;
 
-    let divItemForShoppingCart =  generateShoppingCartItem(ev);
-    let divShoppingCart = document.getElementById("modal-shopping-cart-products");
-    divShoppingCart.innerHTML = divItemForShoppingCart;
+    generateShoppingCartItem(ev);
 }
