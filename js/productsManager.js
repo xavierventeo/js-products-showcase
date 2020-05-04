@@ -25,7 +25,7 @@ function createCardProduct(divShowCase, product) {
     divProductDetails.setAttribute("class", "product-details");
 
     let productName = document.createElement("span");
-    productName.setAttribute("class", "product-category");
+    productName.setAttribute("class", "product-name");
     productName.innerHTML = product.name;
 
     let productDescription = document.createElement("p");
