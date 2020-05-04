@@ -1,4 +1,4 @@
-# Reto 2. Dynamic products Showcase
+# Challenge 2. Dynamic products Showcase
 
 BootCamp FrontEnd of GeeksHub Academy
 
