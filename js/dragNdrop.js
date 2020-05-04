@@ -24,6 +24,8 @@ const generateShoppingCartItem = (ev, totalAmount) => {
     let elementRemove = document.createElement("span");
     elementRemove.setAttribute("class","remove");
     elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
+    elementRemove.setAttribute("onclick","removeProduct(this)");
+
     elementRemove.innerHTML = "×";
     cell3.appendChild(elementRemove);
 
