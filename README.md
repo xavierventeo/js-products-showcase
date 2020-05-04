@@ -1,4 +1,4 @@
-# Reto 2. Dynamec products Showcase
+# Reto 2. Dynamic products Showcase
 
 BootCamp FrontEnd of GeeksHub Academy
 
@@ -15,8 +15,10 @@ Included functon to remove products from shopping cart. You must click on the ca
 ```
 ## Release Notes
 
+```bash
 • 1.0.0: First release, showcase and add products to shopping cart
 • 1.1.0: Added feature product delete from shopping cart
+```
 
 ## Work Description
 
