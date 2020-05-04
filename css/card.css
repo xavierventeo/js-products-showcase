@@ -11,7 +11,7 @@
 }
 
 .product-image {
-    padding: 50px;
+    padding: 20px;
     background: #f0f0f0;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .product-details {
-    padding: 30px;
+    padding: 10px;
 }
 
 .product-details p {
