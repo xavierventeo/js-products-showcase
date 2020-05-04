@@ -5,8 +5,8 @@ let objectDivShowCase = document.getElementById("show-case");
 for (const product of products) {
     console.log(product);
     createCardProduct(objectDivShowCase, product);
-
 }
+
 function createCardProduct(divShowCase, product) {
     let divCard = document.createElement("div");
     divCard.setAttribute("class", "product-card");
@@ -17,6 +17,7 @@ function createCardProduct(divShowCase, product) {
     let elementImage = document.createElement("img");
     elementImage.setAttribute("id", product.id);
     elementImage.setAttribute("src", product.image);
+    elementImage.setAttribute("alt", "Imagen del producto");
     elementImage.setAttribute("draggable", "true");
     elementImage.setAttribute("ondragstart", "drag(event)");
     divImage.appendChild(elementImage);
@@ -46,42 +47,7 @@ function createCardProduct(divShowCase, product) {
     divProductDetails.appendChild(productDescription);
     divProductDetails.appendChild(divPrice);
 
-
     divCard.appendChild(divImage);
     divCard.appendChild(divProductDetails);
     divShowCase.appendChild(divCard);
-
-
-
-
-   // objectDivShowCase.appendChild(divCalculatorKey);
 }
-/*
-        <div class="product-card">
-            <div class="product-image">
-                <img id="1" src="img/mandarina.jpg" alt="Mandarina" draggable="true" ondragstart="drag(event)">
-            </div>
-            <div class="product-details">
-                <span class="product-category">Mandarina</span>
-                <p>Deliciosa mandarina de la huerta de Valencia</p>
-                <div class="product-price">
-                    <span id="prize_1">1,66</span>€
-                </div>
-            </div>
-        </div>
-*/
-
-/*
-
-function createObjectCalculatorKey(objetoDivTeclado, element, classButton) {
-    let divCalculatorKey = document.createElement("div");
-    let butCalculatorKey = document.createElement("button");
-    butCalculatorKey.setAttribute("id", "button" + element[0]);
-    butCalculatorKey.setAttribute("class", classButton + element[1]);
-    butCalculatorKey.innerHTML = element[0];
-
-    divCalculatorKey.appendChild(butCalculatorKey);
-    objectDivKeyBoard.appendChild(divCalculatorKey);
-}
-
-*/

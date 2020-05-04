@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reto 2 GeeksHubs Academy - Showcase dinámico de productos">
+    <meta name="keywords" content="HTML5, CSS3, Javascript, ES6, Git, Git-Flow">
 
     <link type="text/css" rel="stylesheet" href="css/styles.css">
     <link type="text/css" rel="stylesheet" href="css/card.css">
@@ -15,25 +17,37 @@
 <body>
     <header>
         <div id="header" class="header">
-            <div id="logo" class="header-component">
-                <img src="img/logo.jpg">
-            </div>
-            <div id="brand" class="header-component">
-              Lahuertaencasa.com
-            </div>    
-            <span>Arrastra la imagen del producto hasta el Carrito para comprar</span>
+            <div id="sub-header1" class="sub-header1">
+                <div id="logo" class="header-component">
+                    <img src="img/logo.jpg">
+                </div>
+                <div id="brand" class="header-title">
+                    <div><h1>LaHuerta<span>EnCasa.com</span></h1></div>
+                    <div><h3>Productos frescos de la huerta a casa</h3></div>
+                </div>    
 
-            <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <span><img src="img/cart.png"></span>
-                <span>Carrito (</span>
-                <span id="total_amount">0</span>
-                <span>€)</span>
-            </div>        
+                <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <span><img src="img/cart.png"></span>
+                    <span>Carrito (</span>
+                    <span id="total_amount">0</span>
+                    <span>€)</span>
+                </div>        
+            </div>
+            <div id="sub-header2" class="sub-header2">
+                <div>Gastos de envío gratuitos a partir de 30€</div>
+                <div>Envío en 24h en la península</div>
+            </div>
         </div>
     </header>
 
-	<div id="show-case" class="show-case">
-    </div> 
+	<div id="show-case" class="show-case"></div> 
+    <footer>
+        <div id="footer" class="footer">
+            <div>&copy; GeeksHubs BootCamp 2020</div>
+            <div>Att. Cliente: 930 00 0000</div>
+        </div>
+</footer>
+
     <script src="js/productsManager.js"></script>
 </body>
 </html>

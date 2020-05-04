@@ -1,8 +1,16 @@
 .show-case {
-    margin-top: 150px;
+    margin-top: 200px;
     display: flex;
     flex-wrap: wrap;
 }
+
+/* Adapt for mobile. Header show direction column*/
+@media only screen and (max-width: 400px) {  
+    .show-case {
+        margin-top: 370px;
+    }
+}
+
 
 .product-card {
     box-shadow: 0 2px 7px #dfdfdf;
@@ -11,7 +19,7 @@
 }
 
 .product-image {
-    padding: 50px;
+    padding: 20px;
     background: #f0f0f0;
 }
 
@@ -22,7 +30,7 @@
 }
 
 .product-details {
-    padding: 30px;
+    padding: 10px;
 }
 
 .product-details p {
