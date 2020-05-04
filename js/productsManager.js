@@ -1,13 +1,4 @@
-let products = JSON.parse(productsJSON);
-
-let objectDivShowCase = document.getElementById("show-case");
-
-for (const product of products) {
-    console.log(product);
-    createCardProduct(objectDivShowCase, product);
-}
-
-function createCardProduct(divShowCase, product) {
+let createCardProduct = (divShowCase, product) => {
     let divCard = document.createElement("div");
     divCard.setAttribute("class", "product-card");
 
@@ -50,4 +41,12 @@ function createCardProduct(divShowCase, product) {
     divCard.appendChild(divImage);
     divCard.appendChild(divProductDetails);
     divShowCase.appendChild(divCard);
+}
+
+let products = JSON.parse(productsJSON);
+
+let objectDivShowCase = document.getElementById("show-case");
+
+for (const product of products) {
+    createCardProduct(objectDivShowCase, product);
 }
