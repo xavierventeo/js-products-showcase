@@ -16,7 +16,7 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
 
-const generateShoppingCartItem = (ev, totalAmount) => {
+const generateShoppingCartItemAtModal = (ev, totalAmount) => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
     let name = document.getElementById("name_" + product_id).innerHTML;
@@ -84,5 +84,5 @@ const drop = ev => {
     let divCartUnit = document.getElementById("total_amount");
     divCartUnit.innerHTML = totalAmount+globalCurrency;
 
-    generateShoppingCartItem(ev, totalAmount);
+    generateShoppingCartItemAtModal(ev, totalAmount);
 }
