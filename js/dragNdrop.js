@@ -1,4 +1,4 @@
-const removeProduct = (elementRemove, productPrice) => {
+const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     elementTD = elementRemove.parentElement;
     elementTR = elementTD.parentElement;
 
@@ -7,16 +7,16 @@ const removeProduct = (elementRemove, productPrice) => {
     let currentAmount = document.getElementById("total_amount").innerHTML;
 
     productPrice =  productPrice.replace(",", ".");
-    currentAmount = currentAmount.replace(",", ".");
-    
+    currentAmount = currentAmount.replace(",", ".").replace(globalCurrency,"");
+
     let totalAmount = parseFloat(currentAmount) - parseFloat(productPrice);
-    totalAmount = totalAmount.toString().replace(".", ",")+"€";
+    totalAmount = totalAmount.toString().replace(".", ",")+globalCurrency;
 
     document.getElementById("total_amount").innerHTML = totalAmount;
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
 
-const generateShoppingCartItem = (ev, totalAmount) => {
+const generateShoppingCartItemAtModal = (ev, totalAmount) => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
     let name = document.getElementById("name_" + product_id).innerHTML;
@@ -42,7 +42,7 @@ const generateShoppingCartItem = (ev, totalAmount) => {
     let elementRemove = document.createElement("span");
     elementRemove.setAttribute("class","remove");
     elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
-    elementRemove.setAttribute("onclick",`removeProduct(this, "${price.toString()}")`);
+    elementRemove.setAttribute("onclick",`removeProductFromShoppingCart(this, "${price.toString()}")`);
 
     elementRemove.innerHTML = "×";
     cell3.appendChild(elementRemove);
@@ -82,7 +82,7 @@ const drop = ev => {
 
     totalAmount = getTotalAmountOfShoppingCartAfterEvent(ev);
     let divCartUnit = document.getElementById("total_amount");
-    divCartUnit.innerHTML = totalAmount+"€";
+    divCartUnit.innerHTML = totalAmount+globalCurrency;
 
-    generateShoppingCartItem(ev, totalAmount);
+    generateShoppingCartItemAtModal(ev, totalAmount);
 }
