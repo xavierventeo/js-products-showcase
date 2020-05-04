@@ -1,4 +1,4 @@
-const generateShoppingCartItem = ev => {
+const generateShoppingCartItem = (ev, totalAmount) => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
     let name = document.getElementById("name_" + product_id).innerHTML;
@@ -26,6 +26,9 @@ const generateShoppingCartItem = ev => {
     elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
     elementRemove.innerHTML = "×";
     cell3.appendChild(elementRemove);
+
+    let itemTotalAmount = document.getElementById("total-shopping-cart");
+    itemTotalAmount.innerHTML = totalAmount + currency;
 }
 
 const allowDrop = ev => {
@@ -61,5 +64,5 @@ const drop = ev => {
     let divCartUnit = document.getElementById("total_amount");
     divCartUnit.innerHTML = totalAmount;
 
-    generateShoppingCartItem(ev);
+    generateShoppingCartItem(ev, totalAmount);
 }
