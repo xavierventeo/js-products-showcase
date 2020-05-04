@@ -1,3 +1,21 @@
+const removeProduct = (elementRemove, productPrice) => {
+    elementTD = elementRemove.parentElement;
+    elementTR = elementTD.parentElement;
+
+    document.getElementById("modal-shopping-cart-products").deleteRow(elementTR.rowIndex);
+
+    let currentAmount = document.getElementById("total_amount").innerHTML;
+
+    productPrice =  productPrice.replace(",", ".");
+    currentAmount = currentAmount.replace(",", ".");
+    
+    let totalAmount = parseFloat(currentAmount) - parseFloat(productPrice);
+    totalAmount = totalAmount.toString().replace(".", ",")+"€";
+
+    document.getElementById("total_amount").innerHTML = totalAmount;
+    document.getElementById("total-shopping-cart").innerHTML = totalAmount;
+}
+
 const generateShoppingCartItem = (ev, totalAmount) => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
@@ -24,6 +42,8 @@ const generateShoppingCartItem = (ev, totalAmount) => {
     let elementRemove = document.createElement("span");
     elementRemove.setAttribute("class","remove");
     elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
+    elementRemove.setAttribute("onclick",`removeProduct(this, "${price.toString()}")`);
+
     elementRemove.innerHTML = "×";
     cell3.appendChild(elementRemove);
 
@@ -39,12 +59,12 @@ const allowDrop = ev => {
 const getTotalAmountOfShoppingCartAfterEvent = ev => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
-    prize = price.replace(",", ".");
+    price = price.replace(",", ".");
 
     let currentAmount = document.getElementById("total_amount").innerHTML;
     currentAmount = currentAmount.replace(",", ".");
 
-    let totalAmount = parseFloat(currentAmount) + parseFloat(prize);
+    let totalAmount = parseFloat(currentAmount) + parseFloat(price);
     totalAmount = totalAmount.toString().replace(".", ",");
     return totalAmount;
 }
@@ -62,7 +82,7 @@ const drop = ev => {
 
     totalAmount = getTotalAmountOfShoppingCartAfterEvent(ev);
     let divCartUnit = document.getElementById("total_amount");
-    divCartUnit.innerHTML = totalAmount;
+    divCartUnit.innerHTML = totalAmount+"€";
 
     generateShoppingCartItem(ev, totalAmount);
 }
