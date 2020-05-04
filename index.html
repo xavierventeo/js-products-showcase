@@ -3,36 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/card.css">
-    <script src="js/dragdrop.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link type="text/css" rel="stylesheet" href="css/card.css">
+
+    <script src="js/dragNdrop.js"></script>
+    <script src="data/data.js"></script>
+
     <title>Products Showcase</title>
 </head>
 <body>
-    <p>Drag the image into the rectangle:</p>
+    <header>
+        <div id="header" class="header">
+            <div id="logo" class="header-component">
+                <img src="img/logo.jpg">
+            </div>
+            <div id="brand" class="header-component">
+              Lahuertaencasa.com
+            </div>    
+            <span>Arrastra la imagen del producto hasta el Carrito para comprar</span>
 
-    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    <br>
-    <img id="drag1" src="img/product1.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+            <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <span><img src="img/cart.png"></span>
+                <span>Carrito (</span>
+                <span id="total_amount">0</span>
+                <span>€)</span>
+            </div>        
+        </div>
+    </header>
 
-	<div class="product-card">
-		<div class="product-tumb">
-			<img src="https://i.imgur.com/xdbHo4E.png" alt="">
-		</div>
-		<div class="product-details">
-			<span class="product-catagory">Women,bag</span>
-			<h4><a href="">Women leather bag</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-			<div class="product-bottom-details">
-				<div class="product-price"><small>$96.00</small>$230.99</div>
-				<div class="product-links">
-					<a href=""><i class="fa fa-heart"></i></a>
-					<a href=""><i class="fa fa-shopping-cart"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+	<div id="show-case" class="show-case">
+    </div> 
+    <script src="js/productsManager.js"></script>
 </body>
 </html>
