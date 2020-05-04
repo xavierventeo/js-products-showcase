@@ -66,6 +66,10 @@
     justify-content: flex-end;
     align-items: center;
 }
+.shopping-cart:hover {
+    background: #72d9c4;
+    cursor: pointer;
+}
 .shopping-cart span img{
     margin-right: 0.5em;
 }
@@ -80,4 +84,8 @@
     width: 99%;
     height: 40px;
     padding-top: 1em;
+}
+
+.right {
+    text-align: right;
 }

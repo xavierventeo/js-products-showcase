@@ -1,3 +1,5 @@
+const globalCurrency = "€";
+
 const createContainerImage = (product) => {
     let divImage = document.createElement("div");
     divImage.setAttribute("class", "product-image");
@@ -20,6 +22,7 @@ const createContainerProductPrice = (product) => {
     elementPrice.setAttribute("id", "price_" + product.id);
     elementPrice.innerHTML = product.price;
     let elementCurrency = document.createElement("span");
+    elementCurrency.setAttribute("id", "currency_" + product.id);
     elementCurrency.innerHTML = product.currency;
 
     divPrice.appendChild(elementPrice);
@@ -34,6 +37,7 @@ const createContainerProductDetails = (product) => {
 
     let productName = document.createElement("span");
     productName.setAttribute("class", "product-name");
+    productName.setAttribute("id", "name_" + product.id);
     productName.innerHTML = product.name;
 
     let productDescription = document.createElement("p");

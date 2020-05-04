@@ -8,6 +8,7 @@
 
     <link type="text/css" rel="stylesheet" href="css/styles.css">
     <link type="text/css" rel="stylesheet" href="css/card.css">
+    <link type="text/css" rel="stylesheet" href="css/modal.css">
 
     <script src="js/dragNdrop.js"></script>
     <script src="data/data.js"></script>
@@ -28,9 +29,9 @@
 
                 <div id="shopping-cart" class="shopping-cart header-component" ondrop="drop(event)" ondragover="allowDrop(event)">
                     <span><img src="img/cart.png"></span>
-                    <span>Carrito (</span>
-                    <span id="total_amount">0</span>
-                    <span>€)</span>
+                    <span>Ver Carrito (</span>
+                    <span id="total_amount">0€</span>
+                    <span>)</span>
                 </div>        
             </div>
             <div id="sub-header2" class="sub-header2">
@@ -40,14 +41,35 @@
         </div>
     </header>
 
-	<div id="show-case" class="show-case"></div> 
+    <div id="show-case" class="show-case"></div> 
+    
+	<div id="tvesModal" class="modalContainer">
+		<div class="modal-content">
+			<span class="close">×</span>
+            <h2 onclick="alert('No es posible realizar el pago :(')">Confirmar Pedido</h2>
+            <div id="modal-shopping-cart" class="modal-shopping-cart">
+                <table id="modal-shopping-cart-products" class="modal-shopping-cart-products">
+                    <tr>
+                        <td colspan="3"><hr></td>
+                    </tr> 
+                    <tr>
+                        <td><span class="product-name">Total</span></td>                         
+                        <td><span id="total-shopping-cart" class="product-price">0€</span></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+		</div>
+	</div>
+
     <footer>
         <div id="footer" class="footer">
             <div>&copy; GeeksHubs BootCamp 2020</div>
             <div>Att. Cliente: 930 00 0000</div>
         </div>
-</footer>
+    </footer>
 
     <script src="js/productsManager.js"></script>
+    <script src="js/modal.js"></script>
 </body>
 </html>
