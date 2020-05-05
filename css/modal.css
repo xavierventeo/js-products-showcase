@@ -1,4 +1,4 @@
-.modalContainer {
+.modal-container {
     display: none; 
     position: fixed; 
     z-index: 1;
@@ -12,7 +12,7 @@
     background-color: rgba(0,0,0,0.4);
 }
 
-.modalContainer .modal-content {
+.modal-container .modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -21,39 +21,39 @@
     width: 60%;
 }
 
-.modalContainer .close {
+.modal-container .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.modalContainer .close {
+.modal-container .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.modalContainer .close:hover,
-.modalContainer .close:focus {
+.modal-container .close:hover,
+.modal-container .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modalContainer .remove {
+.modal-container .remove {
     color: red;
     font-size: 26px;
     font-weight: bold;
 }
 
-.modalContainer .remove:hover,
-.modalContainer .remove:focus {
+.modal-container .remove:hover,
+.modal-container .remove:focus {
     cursor: pointer;
 }
 
-.modalContainer h2 {
+.modal-container h2 {
     color: #fbb72c;
     cursor: pointer;
 }
