@@ -18,6 +18,10 @@ Included functon to remove products from shopping cart. You must click on the ca
 ```bash
 • 1.0.0: First release, showcase and add products to shopping cart
 • 1.1.0: Added feature product delete from shopping cart
+• 1.1.1: Minor correction in README.md
+• 1.1.2: Minor correction in README.md
+• 1.1.3: Minor refactor and fix problem wiht decimals in shopping cart amount calculation
+
 ```
 
 ## Work Description

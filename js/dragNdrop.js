@@ -9,7 +9,7 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     productPrice =  productPrice.replace(",", ".");
     currentAmount = currentAmount.replace(",", ".").replace(globalCurrency,"");
 
-    let totalAmount = parseFloat(currentAmount) - parseFloat(productPrice);
+    let totalAmount = (parseFloat(currentAmount) - parseFloat(productPrice)).toFixed(2);
     totalAmount = totalAmount.toString().replace(".", ",")+globalCurrency;
 
     document.getElementById("total_amount").innerHTML = totalAmount;

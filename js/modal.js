@@ -1,5 +1,5 @@
 if (document.getElementById("shopping-cart")){
-    var modal = document.getElementById("tvesModal");
+    var modal = document.getElementById("modal-container");
     var divShoppingCart = document.getElementById("shopping-cart");
     var span = document.getElementsByClassName("close")[0];
     var body = document.getElementsByTagName("body")[0];
