@@ -47,17 +47,17 @@
 		<div class="modal-content">
 			<span class="close">×</span>
             <h2 onclick="alert('No es posible realizar el pago :(')">Confirmar Pedido</h2>
+            <div id="summary-shopping-cart"></div>
+
             <div id="modal-shopping-cart" class="modal-shopping-cart">
-                <table id="modal-shopping-cart-products" class="modal-shopping-cart-products">
-                    <tr>
-                        <td colspan="3"><hr></td>
-                    </tr> 
-                    <tr>
-                        <td><span class="product-name">Total</span></td>                         
-                        <td><span id="total-shopping-cart" class="product-price">0€</span></td>
-                        <td></td>
-                    </tr>
-                </table>
+                <div id="summary-shopping-cart">
+                    <hr>
+                    <div class="row">
+                        <span class="column product-name">Total</span>
+                        <span class="column product-price"  id="total-shopping-cart">0€</span>
+                        <span class="column"></span>
+                    </div>
+                </div>
             </div>
 		</div>
 	</div>
