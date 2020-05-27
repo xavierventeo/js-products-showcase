@@ -1,5 +1,5 @@
 var cartArray = [];
-
+var currencyShowCase = "€";
 
 const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     elementTD = elementRemove.parentElement;
@@ -19,7 +19,6 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
 
-
 const removeItemFromShoppingCart = (elementRemove) => {
     console.log(elementRemove);
     let removedProductID = elementRemove.getAttribute('product_id');
@@ -30,10 +29,12 @@ const removeItemFromShoppingCart = (elementRemove) => {
     cartArray = cartArray.filter(function (productID) {
         return productID !== removedProductID;
     });
-
     calcularTotal();
 }
 
+const formatAmount = (amount, currency) => {
+    return String(amount).replace(".", ",") + currency;
+}
 
 const calcularTotal = () => {
     let totalAmount = 0;
@@ -45,6 +46,7 @@ const calcularTotal = () => {
         });
         totalAmount = (parseFloat(totalAmount) + parseFloat(product[0]['price'].replace(",", "."))).toFixed(2);
     }
+    totalAmount = formatAmount(totalAmount, currencyShowCase);
     document.getElementById("total_amount").innerHTML = totalAmount;
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
