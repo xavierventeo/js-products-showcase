@@ -17,7 +17,30 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
 }
 
 
-const addItemToCart = (ev) => {
+const removeItemFromShoppingCart = (elementRemove, productPrice) => {
+    console.log(elementRemove);
+    row = elementRemove.parentElement;
+    row.parentElement.removeChild(row);
+
+
+/*
+
+
+    document.getElementById("modal-shopping-cart-products").deleteRow(elementTR.rowIndex);
+    let currentAmount = document.getElementById("total_amount").innerHTML;
+
+    productPrice =  productPrice.replace(",", ".");
+    currentAmount = currentAmount.replace(",", ".").replace(globalCurrency,"");
+
+    let totalAmount = (parseFloat(currentAmount) - parseFloat(productPrice)).toFixed(2);
+    totalAmount = totalAmount.toString().replace(".", ",")+globalCurrency;
+
+    document.getElementById("total_amount").innerHTML = totalAmount;
+    document.getElementById("total-shopping-cart").innerHTML = totalAmount;
+*/
+}
+
+const addItemToShoppingCart = (ev) => {
     let product_id = ev.dataTransfer.getData("text");
 
     let $shoppingCart = document.getElementById("summary-shopping-cart");
@@ -41,17 +64,17 @@ const addItemToCart = (ev) => {
         divRow.setAttribute("class", "row");
         
         let elementProduct = document.createElement("span");
-        elementProduct.textContent = `${numeroUnidadesItem} x ${fullItem[0]['name']}`;
+        elementProduct.textContent = `${fullItem[0]['name']}`;
         elementProduct.setAttribute("class", "column product-name");
 
         let elementPrice = document.createElement("span");
-        elementPrice.textContent = `${fullItem[0]['price']}€`;
+        elementPrice.textContent = `${numeroUnidadesItem} x ${fullItem[0]['price']}€`;
         elementPrice.setAttribute("class", "column product-price");
 
         let elementRemove = document.createElement("span");
         elementRemove.setAttribute("class","column");
         elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
-        elementRemove.setAttribute("onclick",`removeProductFromShoppingCart(this, "${fullItem[0]['price']}")`);
+        elementRemove.setAttribute("onclick",`removeItemFromShoppingCart(this, "${fullItem[0]['price']}")`);
         elementRemove.innerHTML = "🗑️";
 
         divRow.appendChild(elementProduct);
@@ -131,5 +154,5 @@ const drop = ev => {
     divCartUnit.innerHTML = totalAmount+globalCurrency;
 
     generateShoppingCartItemAtModal(ev, totalAmount);
-    addItemToCart(ev);
+    addItemToShoppingCart(ev);
 }
