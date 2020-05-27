@@ -16,6 +16,52 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
 
+
+const addItemToCart = (ev) => {
+    let product_id = ev.dataTransfer.getData("text");
+
+    let $shoppingCart = document.getElementById("summary-shopping-cart");
+    $shoppingCart.textContent = '';
+    cartArray.push(product_id);
+    let products = JSON.parse(productsJSON);
+
+    let shoppingCartWithoutDuplicates = [...new Set(cartArray)];
+
+    shoppingCartWithoutDuplicates.forEach(function (item) {
+        let fullItem = products.filter(function(itemBaseDatos) {
+            return itemBaseDatos['id'] == item;
+        });
+        
+        // Cuenta el número de veces que se repite el producto
+        let numeroUnidadesItem = cartArray.reduce(function (total, itemId) {
+            return itemId === item ? total += 1 : total;
+        }, 0);
+
+        let divRow = document.createElement("div");
+        divRow.setAttribute("class", "row");
+        
+        let elementProduct = document.createElement("span");
+        elementProduct.textContent = `${numeroUnidadesItem} x ${fullItem[0]['name']}`;
+        elementProduct.setAttribute("class", "column product-name");
+
+        let elementPrice = document.createElement("span");
+        elementPrice.textContent = `${fullItem[0]['price']}€`;
+        elementPrice.setAttribute("class", "column product-price");
+
+        let elementRemove = document.createElement("span");
+        elementRemove.setAttribute("class","column");
+        elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
+        elementRemove.setAttribute("onclick",`removeProductFromShoppingCart(this, "${fullItem[0]['price']}")`);
+        elementRemove.innerHTML = "🗑️";
+
+        divRow.appendChild(elementProduct);
+        divRow.appendChild(elementPrice);
+        divRow.appendChild(elementRemove);
+
+        $shoppingCart.appendChild(divRow);           
+    })
+}
+
 const generateShoppingCartItemAtModal = (ev, totalAmount) => {
     let product_id = ev.dataTransfer.getData("text");
     let price = document.getElementById("price_" + product_id).innerHTML;
@@ -85,4 +131,5 @@ const drop = ev => {
     divCartUnit.innerHTML = totalAmount+globalCurrency;
 
     generateShoppingCartItemAtModal(ev, totalAmount);
+    addItemToCart(ev);
 }
