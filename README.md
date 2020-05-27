@@ -21,6 +21,7 @@ Included functon to remove products from shopping cart. You must click on the ca
 • 1.1.1: Minor correction in README.md
 • 1.1.2: Minor correction in README.md
 • 1.1.3: Minor refactor and fix problem wiht decimals in shopping cart amount calculation
+• 1.1.3: Improve shopping cart consolidating products in a same line
 
 ```
 

@@ -42,12 +42,6 @@
     cursor: pointer;
 }
 
-.modal-container .remove {
-    color: red;
-    font-size: 26px;
-    font-weight: bold;
-}
-
 .modal-container .remove:hover,
 .modal-container .remove:focus {
     cursor: pointer;
@@ -61,4 +55,32 @@
 .modal-shopping-cart-products {
     width: 70%;
     margin-left: 15%;
+}
+
+#summary-shopping-cart {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+  
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column:nth-child(1){
+    width: 55%;
+}
+.column:nth-child(2){
+    width: 35%;
+}
+.column:nth-child(3){
+    width: 10%;
+    cursor: pointer;
 }

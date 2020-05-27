@@ -1,8 +1,10 @@
+var cartArray = [];
+
 if (document.getElementById("shopping-cart")){
-    var modal = document.getElementById("modal-container");
-    var divShoppingCart = document.getElementById("shopping-cart");
-    var span = document.getElementsByClassName("close")[0];
-    var body = document.getElementsByTagName("body")[0];
+    let modal = document.getElementById("modal-container");
+    let divShoppingCart = document.getElementById("shopping-cart");
+    let span = document.getElementsByClassName("close")[0];
+    let body = document.getElementsByTagName("body")[0];
 
     //Open the modal when click on the Shopping Cart in index.html
     divShoppingCart.onclick = function() {

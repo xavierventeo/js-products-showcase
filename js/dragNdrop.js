@@ -1,3 +1,6 @@
+var cartArray = [];
+var currencyShowCase = "€";
+
 const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     elementTD = elementRemove.parentElement;
     elementTR = elementTD.parentElement;
@@ -16,39 +19,85 @@ const removeProductFromShoppingCart = (elementRemove, productPrice) => {
     document.getElementById("total-shopping-cart").innerHTML = totalAmount;
 }
 
-const generateShoppingCartItemAtModal = (ev, totalAmount) => {
+const removeItemFromShoppingCart = (elementRemove) => {
+    console.log(elementRemove);
+    let removedProductID = elementRemove.getAttribute('product_id');
+    row = elementRemove.parentElement;
+    row.parentElement.removeChild(row);
+
+
+    cartArray = cartArray.filter(function (productID) {
+        return productID !== removedProductID;
+    });
+    calcularTotal();
+}
+
+const formatAmount = (amount, currency) => {
+    return String(amount).replace(".", ",") + currency;
+}
+
+const calcularTotal = () => {
+    let totalAmount = 0;
+    let products = JSON.parse(productsJSON);
+
+    for (let item of cartArray) {
+        let product = products.filter(function(JSONItem) {
+            return JSONItem['id'] == item;
+        });
+        totalAmount = (parseFloat(totalAmount) + parseFloat(product[0]['price'].replace(",", "."))).toFixed(2);
+    }
+    totalAmount = formatAmount(totalAmount, currencyShowCase);
+    document.getElementById("total_amount").innerHTML = totalAmount;
+    document.getElementById("total-shopping-cart").innerHTML = totalAmount;
+}
+
+
+const addItemToShoppingCart = (ev) => {
     let product_id = ev.dataTransfer.getData("text");
-    let price = document.getElementById("price_" + product_id).innerHTML;
-    let name = document.getElementById("name_" + product_id).innerHTML;
-    let currency = document.getElementById("currency_" + product_id).innerHTML;
 
-    let table = document.getElementById("modal-shopping-cart-products");
+    let $shoppingCart = document.getElementById("summary-shopping-cart");
+    $shoppingCart.textContent = '';
+    cartArray.push(product_id);
+    let products = JSON.parse(productsJSON);
 
-    let row = table.insertRow(0);
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
-    let cell3 = row.insertCell(2);
+    let shoppingCartWithoutDuplicates = [...new Set(cartArray)];
 
-    let elementName = document.createElement("span");
-    elementName.setAttribute("class","product-name");
-    elementName.innerHTML = name;
-    cell1.appendChild(elementName);
+    shoppingCartWithoutDuplicates.forEach(function (item) {
+        let fullItem = products.filter(function(itemBaseDatos) {
+            return itemBaseDatos['id'] == item;
+        });
+        
+        // Cuenta el número de veces que se repite el producto
+        let numeroUnidadesItem = cartArray.reduce(function (total, itemId) {
+            return itemId === item ? total += 1 : total;
+        }, 0);
 
-    let elementPrice = document.createElement("span");
-    elementPrice.setAttribute("class","product-price");
-    elementPrice.innerHTML = price.toString() + currency;
-    cell2.appendChild(elementPrice);
+        let divRow = document.createElement("div");
+        divRow.setAttribute("class", "row");
+        
+        let elementProduct = document.createElement("span");
+        elementProduct.textContent = `${fullItem[0]['name']}`;
+        elementProduct.setAttribute("class", "column product-name");
 
-    let elementRemove = document.createElement("span");
-    elementRemove.setAttribute("class","remove");
-    elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
-    elementRemove.setAttribute("onclick",`removeProductFromShoppingCart(this, "${price.toString()}")`);
+        let elementPrice = document.createElement("span");
+        elementPrice.textContent = `${numeroUnidadesItem} x ${fullItem[0]['price']}€`;
+        elementPrice.setAttribute("class", "column product-price");
 
-    elementRemove.innerHTML = "×";
-    cell3.appendChild(elementRemove);
+        let elementRemove = document.createElement("span");
+        elementRemove.setAttribute("class","column");
+        elementRemove.setAttribute("title","Eliminar este producto de mi carrito");
+        elementRemove.setAttribute('product_id', item);
+        elementRemove.setAttribute("onclick",`removeItemFromShoppingCart(this)`);
+        elementRemove.innerHTML = "🗑️";
 
-    let itemTotalAmount = document.getElementById("total-shopping-cart");
-    itemTotalAmount.innerHTML = totalAmount + currency;
+        divRow.appendChild(elementProduct);
+        divRow.appendChild(elementPrice);
+        divRow.appendChild(elementRemove);
+
+        $shoppingCart.appendChild(divRow);           
+    });
+
+    calcularTotal();
 }
 
 const allowDrop = ev => {
@@ -84,5 +133,5 @@ const drop = ev => {
     let divCartUnit = document.getElementById("total_amount");
     divCartUnit.innerHTML = totalAmount+globalCurrency;
 
-    generateShoppingCartItemAtModal(ev, totalAmount);
+    addItemToShoppingCart(ev);    
 }
